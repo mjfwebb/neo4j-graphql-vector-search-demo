@@ -1,31 +1,27 @@
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Route, Switch } from "wouter";
+import { AdvancedSearch } from "./AdvancedSearch/AdvancedSearch";
 import "./App.css";
-import { Search } from "./SimpleSearch/Search";
-
-type Input = {
-  phrase: string;
-};
+import { EvenMoreSearch } from "./EvenMoreSearch/EvenMoreSearch";
+import { Menu } from "./Menu";
+import { SimpleSearch } from "./SimpleSearch/SimpleSearch";
 
 function App() {
-  const { register, handleSubmit } = useForm<Input>();
-
-  const [phrase, setPhrase] = useState("");
-
-  const onSubmit: SubmitHandler<Input> = (data) => {
-    setPhrase("");
-    setPhrase(data.phrase);
-  };
-
   return (
     <>
-      <h1>Vector search demo</h1>
-      <p>Search for a movie by a phrase</p>
-      {phrase && <Search phrase={phrase} />}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <textarea {...register("phrase")} />
-        <input type="submit" value="Search by phrase" />
-      </form>
+      <Switch>
+        <Route path="/simple-search">
+          <SimpleSearch />
+        </Route>
+        <Route path="/advanced-search">
+          <AdvancedSearch />
+        </Route>
+        <Route path="/even-more">
+          <EvenMoreSearch />
+        </Route>
+        <Route path="*">
+          <Menu />
+        </Route>
+      </Switch>
     </>
   );
 }
