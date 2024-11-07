@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { Link } from "wouter";
 
 const SEARCH_MOVIE_BY_PHRASE = `
   query SearchByPhrase($phrase: String!) {
@@ -41,6 +42,7 @@ export function Search({ phrase }: { phrase: string }) {
           </div>
         ))}
       </div>
+      <Link to="/search-with-traversal">👀 Node search with traversal</Link>
     </div>
   );
 }

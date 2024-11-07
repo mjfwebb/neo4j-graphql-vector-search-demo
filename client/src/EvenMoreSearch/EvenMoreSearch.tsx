@@ -18,7 +18,7 @@ export const EvenMoreSearch = () => {
 
   return (
     <div>
-      <h2>Search for a movie by a phrase</h2>
+      <h2>Search for a movie by a phrase, with even more traversal</h2>
       {phrase && <Search phrase={phrase} />}
       <form onSubmit={handleSubmit(onSubmit)}>
         <textarea {...register("phrase")} />
